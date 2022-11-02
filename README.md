@@ -1,4 +1,4 @@
-# eth_info_bot
+# Etherium telegram bot
  
 Telegram bot, which allows to monitor gas prices, exchange rates, convert currencies and calculate profit per sale
 
