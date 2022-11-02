@@ -44,6 +44,7 @@ class convert():
     def eth(msg):
         eth_usd = price.get_eth_usd()
         eth_rub = price.get_eth_rub()
+        
         if len(msg) == 1:
             return f'ETH\t1\nUSD\t{eth_usd}\nRUB \t{eth_rub}'
         elif len(msg) == 2:
@@ -54,6 +55,7 @@ class convert():
     def usd(msg):
         eth_usd = price.get_eth_usd()
         usd_rub = price.get_usd_rub()
+        
         if len(msg) == 1:
             return f'USD\t1\nETH\t{1/eth_usd}\nRUB\t{usd_rub}'
         elif len(msg) == 2:
@@ -64,18 +66,19 @@ class convert():
     def rub(msg):
         usd_rub = price.get_usd_rub()
         eth_rub = price.get_eth_rub()
+        
         if len(msg) == 1:
-            return f'RUB\t1\nETH\t{1/eth_rub}\nUSD\t{1/eth_rub}'
+            return f'RUB\t1\nETH\t{1/eth_rub}\nUSD\t{1/usd_rub}'
         elif len(msg) == 2:
              return  f'RUB\t{int(float(msg[1]))}\nETH\t{round(float(msg[1])/eth_rub, 2)}\nUSD\t{int(float(msg[1])/usd_rub)}'
         else:
             return 'The function accepts only one number.'
 
-#test cases
+#Example cases
 if __name__ == '__main__':
     print(price.get_eth_usd(), end='\n') # prints out the current exchange rate
     print(price.get_eth_rub(), end='\n') # prints out the current exchange rate
     print(price.get_usd_rub(), end='\n\n') # prints out the current exchange rate
     print(price.gas(), end='\n\n') # prints out the current gas prices for eth
     print(convert.eth(['/eth 1']))
-    print(compute.profit([1000, 57, 3, 200]), end = '\n\n') # computes profit with buy/sell, gas and fees 
+    print(compute.profit([8, 0.1, 0.0015, 0.3]), end = '\n\n') # computes profit with buy, sell, gas and fees 
