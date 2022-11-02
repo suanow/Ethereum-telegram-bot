@@ -2,7 +2,7 @@ from pycoingecko import CoinGeckoAPI
 import requests
 import json
 from etherscan import Etherscan
- 
+
 
 ETHERSCAN_TOKEN = 'P1ARR161VTV5F45PSFDNWZ12I1DAK18J43'
 gas_url = f'https://api.etherscan.io/api?module=gastracker&action=gasoracle&apikey={ETHERSCAN_TOKEN}'
