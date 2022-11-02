@@ -7,23 +7,27 @@ from functions import price, compute, convert
 help = ['List of avaliable commands: \n\n'
         'Check sale profit: /calc \n'
         'Get gas price : /gas\n'
-        'ETH ro USD excange rate: /ethusd \n'
-        'ETH ro RUB excange rate: /ethrub \n'
-        'RUB ro USD excange rate: /usdrub' ]
- 
-bot = telebot.TeleBot('5475678962:AAFzRcJB8QLqo5DGEQETv-AcyddJ2Cw4300')
+        'ETH to USD excange rate: /ethusd \n'
+        'ETH to RUB excange rate: /ethrub \n'
+        'RUB to USD excange rate: /usdrub']
 
+TOKEN = '5475678962:AAFzRcJB8QLqo5DGEQETv-AcyddJ2Cw4300'
+
+bot = telebot.TeleBot(TOKEN)
+
+#start message
 @bot.message_handler(commands=['start'])
 def start_message(message):
     bot.send_message(message.chat.id, 'WELCOME /help')
 
+#calculate profit
 @bot.message_handler(commands=['calc'])
 def calculation(message):
     msg = message.text.split(' ')
     try:
         bot.send_message(message.chat.id, compute.profit(msg[1:]))
     except IndexError:
-        bot.send_message(message.chat.id, 'Input has to be 4 numbers')
+        bot.send_message(message.chat.id, 'Input requires 4 numbers')
           
 
 @bot.message_handler(commands=['eth'])

@@ -2,19 +2,14 @@ from pycoingecko import CoinGeckoAPI
 import requests
 import json
 from etherscan import Etherscan
-
-
  
 
-ETHERSCAN_TOKEN = "P1ARR161VTV5F45PSFDNWZ12I1DAK18J43"
-gas_url = f"https://api.etherscan.io/api?module=gastracker&action=gasoracle&apikey={ETHERSCAN_TOKEN}"
-
+ETHERSCAN_TOKEN = 'P1ARR161VTV5F45PSFDNWZ12I1DAK18J43'
+gas_url = f'https://api.etherscan.io/api?module=gastracker&action=gasoracle&apikey={ETHERSCAN_TOKEN}'
 
 cg = CoinGeckoAPI()
 
-
 class price():
-    
     def get_eth_usd():
         return cg.get_price(ids='ethereum', vs_currencies='usd').get('ethereum').get('usd')
     
@@ -54,7 +49,7 @@ class convert():
         elif len(msg) == 2:
             return f'ETH\t{round(float(msg[1]), 2)}\nUSD\t{int(eth_usd * float(msg[1]))}\nRUB\t{int(eth_rub * float(msg[1]))}'
         else:
-            return "Accepts either one number or no number, sosi hui"
+            return 'The function accepts either one or no number'
         
     def usd(msg):
         eth_usd = price.get_eth_usd()
@@ -76,11 +71,11 @@ class convert():
         else:
             return 'The function accepts only one number.'
 
-#test cases хуевые надо доделать 
+#test cases
 if __name__ == '__main__':
-    print(price.get_eth_usd(), end = '\n') # prints out the current exchange rate
-    print(price.get_eth_rub(), end = '\n') # prints out the current exchange rate
-    print(price.get_usd_rub(), end = '\n\n') # prints out the current exchange rate
-    print(price.gas(), end = '\n\n') # prints out the current gas prices for eth
+    print(price.get_eth_usd(), end='\n') # prints out the current exchange rate
+    print(price.get_eth_rub(), end='\n') # prints out the current exchange rate
+    print(price.get_usd_rub(), end='\n\n') # prints out the current exchange rate
+    print(price.gas(), end='\n\n') # prints out the current gas prices for eth
     print(convert.eth(['/eth 1']))
     print(compute.profit([1000, 57, 3, 200]), end = '\n\n') # computes profit with buy/sell, gas and fees 
